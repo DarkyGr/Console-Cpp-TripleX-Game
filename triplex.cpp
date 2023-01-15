@@ -11,9 +11,9 @@ bool PlayGame(int Difficulty){
     PrintIntroduction(Difficulty);
 
     //Declare 3 variables
-    const int CodeA = 4;
-    const int CodeB = 3;
-    const int CodeC = 2;
+    const int CodeA = rand();
+    const int CodeB = rand();
+    const int CodeC = rand();
 
     const int CodeSum = CodeA + CodeB + CodeC;
     const int CodeProduct = CodeA * CodeB * CodeC;
@@ -35,31 +35,35 @@ bool PlayGame(int Difficulty){
     //Check if the player guess is correct
     if (GuessSum == CodeSum && GuessProduct == CodeProduct)
     {
-        std::cout << "\nYou win! :D" << "\n---------------------------------------------------";
+        std::cout << "\n>>> Well done agent! You have extracted a file! Keep going! <<<" << "\n---------------------------------------------------";
         return true;
     }else
     {
-        std::cout << "\nYou lose! X.X" << "\n---------------------------------------------------";
+        std::cout << "\n>>> You entered the wrong code! Careful agent! Try again! <<<" << "\n---------------------------------------------------";
         return false;
     }    
 }
 
 int main()
 {    
-    int LevelDifficulty = 1;
+    int LevelDifficulty = 1;    //Level inital
+    const int MaxDifficulty = 3;    //Level max
 
-    while (true)
+    while (LevelDifficulty <= MaxDifficulty)
     {
         bool bLevelComplete = PlayGame(LevelDifficulty);                
         std::cin.clear();   //Clears any errors
         std::cin.ignore();  //Discards the buffer
 
+        //If you win the match, you level up.
         if (bLevelComplete)
         {
             ++LevelDifficulty;
         }
         
-    }    
+    }
+
+    std::cout << "\n\n*** Congratualtions agent!! You got all the files! Now get out of there! ***\n";
 
     return 0;
 }
