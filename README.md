@@ -1,4 +1,2 @@
 # TripleX-Game-Cpp
-Game to crack the password to help an agent
-
-Game made in C++
+Game to help an agent to decipher the password. Game made in C++ pure.
