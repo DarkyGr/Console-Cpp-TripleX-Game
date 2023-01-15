@@ -2,11 +2,11 @@
 
 void PrintIntroduction(){
     //Message Start
-    std::cout << "You are secret agent breaking into a secure server room.\n";  //Show text in terminal    
+    std::cout << "\n\nYou are secret agent breaking into a secure server room.\n";  //Show text in terminal    
     std::cout << "You need to enter the correct codes to continue...\n\n";
 }
 
-void PlayGame(){
+bool PlayGame(){
     
     PrintIntroduction();
 
@@ -25,8 +25,8 @@ void PlayGame(){
     std::cout << "\n+ The codes multiply to give: " << CodeProduct;
     
     //Store player guess
-    int GuessA , GuessB, GuessC;
-    std::cout << std::endl; //line break
+    int GuessA , GuessB, GuessC;    
+    std::cout << "\n\n-->Type the codes: "; 
     std::cin >> GuessA >> GuessB >> GuessC;    
 
     int GuessSum = GuessA + GuessB + GuessC;
@@ -35,16 +35,23 @@ void PlayGame(){
     //Check if the player guess is correct
     if (GuessSum == CodeSum && GuessProduct == CodeProduct)
     {
-        std::cout << "\nYou win!";
+        std::cout << "\nYou win! :D" << "\n---------------------------------------------------";
+        return true;
     }else
     {
-        std::cout << "\nYou lose!";
+        std::cout << "\nYou lose! X.X" << "\n---------------------------------------------------";
+        return false;
     }    
 }
 
 int main()
 {    
-    PlayGame();
+    while (true)
+    {
+        bool bLevelComplete = PlayGame();                
+        std::cin.clear();   //Clears any errors
+        std::cin.ignore();  //Discards the buffer
+    }    
 
     return 0;
 }
