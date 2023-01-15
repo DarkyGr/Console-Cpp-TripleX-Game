@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 void PrintIntroduction(int Difficulty){
     //Message Start
@@ -11,16 +12,15 @@ bool PlayGame(int Difficulty){
     PrintIntroduction(Difficulty);
 
     //Declare 3 variables
-    const int CodeA = rand();
-    const int CodeB = rand();
-    const int CodeC = rand();
+    const int CodeA = rand() % Difficulty + Difficulty;
+    const int CodeB = rand() % Difficulty + Difficulty;
+    const int CodeC = rand() % Difficulty + Difficulty;
 
     const int CodeSum = CodeA + CodeB + CodeC;
     const int CodeProduct = CodeA * CodeB * CodeC;
 
     //Print CodeSum and CodeProduct to the terminal
-    std::cout << std::endl;
-    std::cout << "+ There are 3 numbers in the code";
+    std::cout << "\n+ There are 3 numbers in the code";
     std::cout << "\n+ The codes add-up to: " << CodeSum;
     std::cout << "\n+ The codes multiply to give: " << CodeProduct;
     
@@ -45,7 +45,9 @@ bool PlayGame(int Difficulty){
 }
 
 int main()
-{    
+{
+    srand(time(NULL));  //Create new random sequence based on time of day
+
     int LevelDifficulty = 1;    //Level inital
     const int MaxDifficulty = 3;    //Level max
 
